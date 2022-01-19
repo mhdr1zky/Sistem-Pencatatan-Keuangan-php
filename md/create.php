@@ -14,7 +14,7 @@
         </button>
       </div>
       <div class="modal-body">
-           <form action='func.php' method='POST'>
+           <form action='func.php' method='POST' enctype="multipart/form-data">
           
               <div class="form-group">
                 <label for="m_nopol"> m_nopol:</label>
@@ -48,7 +48,7 @@
               
               <div class="form-group">
                 <label for="stnk"> stnk:</label>
-                <input type="text" class="form-control" id="stnk" name='stnk' placeholder='stnk'>
+                <input type="file" name="stnk" id="stnk">
               </div>
               
               <div class="form-group">
