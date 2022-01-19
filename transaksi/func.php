@@ -108,6 +108,18 @@ function Delete($id){
       header("Location: index.php");
     }
 }
+function filter($id){
+  if (empty($id)) {
+    $query = "SELECT * FROM  `transaksi`";
+  }
+  if (!empty($id)) {
+     $query = "SELECT * FROM  `transaksi` WHERE  `tr_status` =  '$id'";
+  }
+
+  $exe = mysqli_query(Connect(),$query);
+  return $exe;
+  
+}
 
 
 function Duplicate($id){
@@ -149,4 +161,5 @@ else if(isset($_POST['delete'])){
 else if(isset($_POST['duplicate'])){
   Duplicate($_POST['id']);
 }
+
 ?>

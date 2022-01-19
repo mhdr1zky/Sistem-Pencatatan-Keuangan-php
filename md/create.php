@@ -48,7 +48,8 @@
               
               <div class="form-group">
                 <label for="stnk"> stnk:</label>
-                <input type="file" name="stnk" id="stnk">
+                <input type="file" class="form-control" id="stnk" name='stnk' placeholder='stnk'>
+                <p style="color: red">Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .gif</p>
               </div>
               
               <div class="form-group">

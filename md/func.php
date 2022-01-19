@@ -58,9 +58,23 @@ function Insert(){
 		$type_bbm=$_POST['type_bbm']; 
 		$last_up=$_POST['last_up']; 
 		$pemegang_sk=$_POST['pemegang_sk']; 
-		
-  $query = "INSERT INTO `md` (`m_id`,`m_nopol`,`m_merktype`,`m_cc`,`m_tahun`,`m_jenismodel`,`m_pemegang`,`stnk`,`keterangan`,`type_bbm`,`last_up`,`pemegang_sk`)
+		$rand = rand();
+    $allowed =  array('gif','png','jpg','jpeg');
+    $filename = $_FILES['stnk']['name'];
+  
+
+if (isset($filename)) {
+move_uploaded_file($_FILES['stnk']['tmp_name'], 'stnk/'.$rand.'_'.$filename);
+$stnk = $rand.'_'.$filename;
+// var_dump($stnk);
+// die();
+$query = "INSERT INTO `md` (`m_id`,`m_nopol`,`m_merktype`,`m_cc`,`m_tahun`,`m_jenismodel`,`m_pemegang`,`stnk`,`keterangan`,`type_bbm`,`last_up`,`pemegang_sk`)
 VALUES (NULL,'$m_nopol','$m_merktype','$m_cc','$m_tahun','$m_jenismodel','$m_pemegang','$stnk','$keterangan','$type_bbm','$last_up','$pemegang_sk')";
+} else{
+  $query = "INSERT INTO `md` (`m_id`,`m_nopol`,`m_merktype`,`m_cc`,`m_tahun`,`m_jenismodel`,`m_pemegang`,`keterangan`,`type_bbm`,`last_up`,`pemegang_sk`)
+VALUES (NULL,'$m_nopol','$m_merktype','$m_cc','$m_tahun','$m_jenismodel','$m_pemegang','$keterangan','$type_bbm','$last_up','$pemegang_sk')";
+}
+
 $exe = mysqli_query(Connect(),$query);
   if($exe){
     // kalau berhasil
@@ -145,22 +159,6 @@ $exe = mysqli_query(Connect(),$query);
     $_SESSION['message'] = " Data Gagal disimpan ";
     $_SESSION['mType'] = "danger ";
     header("Location: index.php");
-  }
-}
-// upload function
-$target_dir = "stnk/";
-$target_file = $target_dir . basename($_FILES["stnk"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["stnk"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
   }
 }
 

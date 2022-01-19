@@ -15,7 +15,7 @@
       </div>
       <div class="modal-body">
            <form action='func.php' method='POST'>
-          
+          <input type="hidden" class="form-control" id="id_keg" name='id_keg' value="<?php echo $idx; ?>">
               <div class="form-group">
                 <label for="sub_pagu"> sub_pagu:</label>
                 <input type="text" class="form-control" id="sub_pagu" name='sub_pagu' placeholder='sub_pagu'>

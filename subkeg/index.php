@@ -45,8 +45,7 @@ require_once 'create.php';?>
     <th>sub_pagu</th> 
 <th>sub_nodpa</th> 
 <th>sub_nama</th> 
-<th>sub_jenis</th> 
-<th>id_keg</th> 
+<th>sub_jenis</th>  
 <th>alias</th> 
 
       <th>Opsi</th>
@@ -75,7 +74,6 @@ if (!empty($idx = $_POST['id'])) {
 <td><?=$data['sub_nodpa']?></td>
 <td><?=$data['sub_nama']?></td>
 <td><?=$data['sub_jenis']?></td>
-<td><?=$data['id_keg']?></td>
 <td><?=$data['alias']?></td>
 
                <td>
@@ -96,9 +94,13 @@ if (!empty($idx = $_POST['id'])) {
       </div>
       <div class="modal-body">
            <form action='func.php' method='POST'>
+            <?php if (isset($data['id_keg'])) {
+              echo " <input type='hidden' name='id_keg' value='".$data['id_keg']."'>";
+            }
+            ?>
+              
              <input type='hidden' name='sub_id' value="<?php echo $data['sub_id'];?>">
-          
-               
+             <input type="hidden" class="form-control" id="id_keg" name='id_keg' value="<?php echo $data['id_keg']; ?>">
                 <div class="form-group">
                   <label for="sub_pagu"> sub_pagu:</label>
                   <input type="text" class="form-control" id="sub_pagu" name='sub_pagu' value="<?php echo $data['sub_pagu']; ?>">
@@ -119,10 +121,7 @@ if (!empty($idx = $_POST['id'])) {
                   <input type="text" class="form-control" id="sub_jenis" name='sub_jenis' value="<?php echo $data['sub_jenis']; ?>">
                 </div>
             
-                <div class="form-group">
-                  <label for="id_keg"> id_keg:</label>
-                  <input type="text" class="form-control" id="id_keg" name='id_keg' value="<?php echo $data['id_keg']; ?>">
-                </div>
+        
             
                 <div class="form-group">
                   <label for="alias"> alias:</label>

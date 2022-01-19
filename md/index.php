@@ -44,37 +44,40 @@ require_once 'create.php';?>
       <th>No</th>
     <th>m_nopol</th> 
 <th>m_merktype</th> 
-<th>m_cc</th> 
-<th>m_tahun</th> 
 <th>m_jenismodel</th> 
 <th>m_pemegang</th> 
 <th>stnk</th> 
 <th>keterangan</th> 
 <th>type_bbm</th> 
-<th>last_up</th> 
-<th>pemegang_sk</th> 
-
+<th>updated_at</th> 
       <th>Opsi</th>
       </tr>
       </thead>
       <tbody> 
     <?php
       $ga = GetAll();
+      $query= mysqli_query(Connect(),"SELECT * FROM md m INNER JOIN pegawai p ON m.m_id=p.id");
       $no = 1;
-      foreach($ga as $data){?>
+      foreach($query as $data){?>
        <tr>
        <td><?=$no++?></td>
 <td><?=$data['m_nopol']?></td>
 <td><?=$data['m_merktype']?></td>
-<td><?=$data['m_cc']?></td>
-<td><?=$data['m_tahun']?></td>
-<td><?=$data['m_jenismodel']?></td>
-<td><?=$data['m_pemegang']?></td>
-<td><?=$data['stnk']?></td>
+<td><?=$data['m_jenismodel']?></td> 
+<td><a href="https://api.whatsapp.com/send?phone=<?=hp($data['no_wa'])?>&text=Halo%20Admin"><?=$data['nama']?></td>
+<td>  <center>
+
+                          <?php if($data['stnk'] == ""){ ?>
+                           <p>Lengkapi</p>
+                          <?php }else{ ?>
+                            <img src="stnk/<?php echo $data['stnk']; ?>" class="img-responsive" id="my_image" style="width: 80px;height: auto;" onclick="window.open(this.src)">
+                          <?php } ?>
+
+                        </center>
+                      </td>
 <td><?=$data['keterangan']?></td>
 <td><?=$data['type_bbm']?></td>
 <td><?=$data['last_up']?></td>
-<td><?=$data['pemegang_sk']?></td>
 
                <td>
                 <form method='POST' action='func.php'>
@@ -129,7 +132,14 @@ require_once 'create.php';?>
             
                 <div class="form-group">
                   <label for="stnk"> stnk:</label>
-                  <input type="text" class="form-control" id="stnk" name='stnk' value="<?php echo $data['stnk']; ?>">
+                     <center>
+                          <?php if($data['stnk'] == ""){ ?>
+                            <img src="#" style="width: 80px;height: auto">
+                          <?php }else{ ?>
+                            <img src="stnk/<?php echo $data['stnk']; ?>" class="img-responsive" id="my_image" style="width: 80px;height: auto" >
+                          <?php } ?>
+                        </center>
+                          <input type="text" class="form-control" id="stnk" name='stnk' value="<?php echo $data['stnk']; ?>">
                 </div>
             
                 <div class="form-group">

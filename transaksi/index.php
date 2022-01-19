@@ -29,15 +29,50 @@ require_once 'func.php';
           <div class="col-12">
             <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Transaksi</h3>
+          <h3 class="card-title">Filter</h3>
         </div>
-
-        <div class="card-body">
+ 
+<div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box shadow-none">
+              <span class="info-box-icon bg-info"><i class="fas fa-filter"></i></span>
+              <div class="info-box-content"> <form method="get" action="">
+                <span class="info-box-text">Rekap :
+                  <button type="submit" class="btn-primary btn-xs"><i class="icon fas fa-check"></i></button><select name="rekap" class="form-inline">
+                  <?php if (!isset($_GET['rekap'])) {
+                    echo "";
+                  } else{
+                    $status=$_GET['rekap']; } ?>
+                    
+                  <option value=''>semua</option>
+                     <?php dropdown('rekap','nama_rkp','nama_rkp','rekp_id',$status);?>
+                    </select></span>
+                <span class="info-box-number"><a>Filter id : 
+                        <?php 
+                         if(isset($_GET['rekap'])){
+                         $status = $_GET['rekap'];
+                       }
+                        // var_dump($status);
+                        if($status == "semua"){
+                          echo "SEMUA REKAP";
+                        }else{
+                          $k = mysqli_query(Connect(),"select * from transaksi where tr_status='$status' ");
+                          $kk = mysqli_fetch_assoc($k);
+                          echo $kk['tr_status'];
+                        }
+                        ?></a></span></form>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+         
+                </div>
 
 <?php  
+
 // there for call modal form create data
 require_once 'create.php';?>
-  
+   
      <table id="example1" class="table table-bordered table-striped table-hover">
     <thead>
       <tr>
@@ -57,7 +92,7 @@ require_once 'create.php';?>
       </thead>
       <tbody> 
     <?php
-      $ga = GetAll();
+      $ga = filter($status);
       $no = 1;
       foreach($ga as $data){?>
        <tr>
