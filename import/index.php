@@ -1,4 +1,3 @@
-
 <?php
 require_once '../config/conn.php';
 require_once '../template/header_tabel.php';
@@ -11,12 +10,12 @@ require_once 'func.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Transaksi</h1>
+            <h1>Kegiatan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href=''>Home</a></li>
-              <li class="breadcrumb-item active">Transaksi</li>
+              <li class="breadcrumb-item active">Kegiatan</li>
             </ol>
           </div>
         </div>
@@ -29,87 +28,45 @@ require_once 'func.php';
           <div class="col-12">
             <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Filters</h3>
+          <h3 class="card-title">Kegiatan</h3>
         </div>
- <div></div>
- <div class="row">
-<div class="col-md-3 col-sm-6 col-12">
 
-            <div class="info-box">
-             
-              <span class="info-box-icon bg-info"><i class="fas fa-filter"></i></span>
-              <div class="info-box-content"> <form method="get" action="">
-                <span class="info-box-text">Rekap Filter:
-                  <button type="submit" class="btn-primary btn-xs"><i class="icon fas fa-check"></i></button><select name="rekap" class="form-inline">
-                  <?php if (!isset($_GET['rekap'])) {
-                    echo "";
-                  } else{
-                    $status=$_GET['rekap']; } ?>
+        <div class="card-body">
 
-                  <option value=''>semua</option>
-                     <?php dropdown('rekap','nama_rkp','nama_rkp','rekp_id',$status);?>
-                    </select></span>
-                <span class="info-box-number"><a>Filter id : 
-                        <?php 
-                         if(isset($_GET['rekap'])){
-                         $status = $_GET['rekap'];
-                       }
-                        // var_dump($status);
-                        if($status == "semua"){
-                          echo "SEMUA REKAP";
-                        }else{
-                          $k = mysqli_query(Connect(),"select * from transaksi where tr_status='$status' ");
-                          $kk = mysqli_fetch_assoc($k);
-                          echo $kk['tr_status'];
-                        }
-                        ?></a></span></form>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
+	<h2>IMPORT EXCEL KE MYSQL DENGAN PHP</h2>
+	
 
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+	<?php 
+	if(isset($_GET['berhasil'])){
+		echo "<p>".$_GET['berhasil']." Data berhasil di import.</p>";
+	include_once '../config/conn.php';
+	}
+	?>
 
-              <div class="info-box-content">
-                <span class="info-box-text">Bookmarks</span>
-                <span class="info-box-number">410</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-
-      </div>
-    </div>
-
-<?php  
-
-// there for call modal form create data
-require_once 'create.php';?>
-   
-     <table id="example1" class="table table-bordered table-striped table-hover">
-    <thead>
-      <tr>
-      <th>No</th>
-    <th>tr_status</th> 
-<th>tr_nama</th> 
-<th>tr_subkeg</th> 
-<th>tgl_ba</th> 
-<th>tr_nominal</th> 
-<th>tr_ppn</th> 
-<th>tr_pph</th> 
-<th>tr_ket</th> 
-<th>updoc</th> 
-
-      <th>Opsi</th>
-      </tr>
-      </thead>
-      <tbody> 
-    <?php
-    
+<h3>Upload dibawah</h3>
+<a href="format_rekap.xls"><b>Download Format Excel <i class="fa fa-download"></i></b></a>
+<p>! Pastikan Semua tabel excel tidak ada yang kosong</p>
+	<form method="post" enctype="multipart/form-data" action="upload_act.php">
+	Pilih File: 
+	<input name="filepegawai" type="file" required="required"> 
+	<input name="upload" type="submit" class="btn btn-primary" value="Import">
+</form>
+  <br>
+	<table border="1">
+		<tr>
+			<th>No</th>
+			<th>Status</th>
+			<th>Nama</th>
+			<th>Subkeg</th>
+			<th>tgl</th>
+			<th>nominal</th>
+			<th>ppn</th>
+			<th>pph</th>
+			<th>ket</th>
+			<th>updoc</th>
+		</tr>
+		<?php 
+	
       $ga = filter($status);
       $no = 1;
       foreach($ga as $data){?>

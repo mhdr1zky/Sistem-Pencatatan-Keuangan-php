@@ -18,9 +18,10 @@
           
               <div class="form-group">
                 <label for="tr_status"> tr_status:</label>
-                <input type="text" class="form-control" id="tr_status" name='tr_status' placeholder='tr_status'>
-              </div>
-              
+               <select class="dropdown_list" id="tr_status"  name="tr_status">
+<?php dropdown('rekap','nama_rkp','nama_rkp','rekp_id')?></select>
+
+                 </div>
               <div class="form-group">
                 <label for="tr_nama"> tr_nama:</label>
                 <input type="text" class="form-control" id="tr_nama" name='tr_nama' placeholder='tr_nama'>
@@ -30,11 +31,12 @@
                 <label for="tr_subkeg"> tr_subkeg:</label>
                 <select class="dropdown_list" id="tr_subkeg"  name="tr_subkeg">
 <?php dropdown('subkeg','alias','alias','sub_id')?></select>
+
               </div>
               
               <div class="form-group">
                 <label for="tgl_ba"> tgl_ba:</label>
-                <input type="text" class="form-control" id="tgl_ba" name='tgl_ba' placeholder='tgl_ba'>
+                <input type="date" class="form-control" id="tgl_ba" name='tgl_ba' placeholder='tgl_ba'>
               </div>
               
               <div class="form-group">

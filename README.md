@@ -1,4 +1,15 @@
 # php-CRUD-Generator-Admin Lte3
+
+<select name="rekap" class="form-inline">
+                  <?php if (!isset($_GET['rekap'])) {
+                    echo "";
+                  } else{
+                    $status=$_GET['rekap']; } ?>
+
+                  <option value=''>semua</option>
+                     <?php dropdown('rekap','nama_rkp','nama_rkp','rekp_id',$status);?>
+                    </select>
+                    
 <select class="dropdown_list" id="tr_subkeg"  name="tr_subkeg">
 <?php dropdown('subkeg','alias','alias','sub_id')?></select>
 
@@ -21,33 +32,12 @@ this may be out of date but still many use i modified it with nice ui , it can b
 ## How to use
 
 ```
-a. put the php-Crud-Generator folder on localhost
-B. open localhost/php-Crud-Generator from browser
-C. on the form "create database connection" fill correctly: hostname # usually localhost,
-database name # is the name of the database that will generate the CRUD, the database user # is usually root,
-database password # usually on windows just leave it blank, project link # just copy the url
-that is displayed in the browser. then click the generate config file button
-D. next select the table, and press generate or you can directly press generate All
-e. a list of folders that have been generated will appear in the "List of folders"
 
-Indonesia:
-a. letakkan folder php-Crud-Generator pada localhost
-b. buka localhost/php-Crud-Generator dari browser
-c. pada form "create database connection" isikan dengan benar : hostname #biasanya localhost, 
-database name #adalah nama database yang akan di generate kan CRUD nya, database user #biasanya root,
-database password #biasanya kalau di windows di kosongkan saja, link project #copykan saja url
-yang di tampilkan pada browser. next klik tombol generate config file
-d. next pilih tabel, dan tekan generate atau bisa langsung menekan generate All
-e. daftar folder yang telah di generate akan muncul pada "Daftar folder"
 ```
 
 ## Cooming Soon
 
-1. Import data From Excel
-2. Auto Backup Database on Logout
-3. Add Function
-2. Security from SQL-injection
-3. etc
+1. make feature Import external file from excel (rekap bbm via untuk ke server)
 
 ## Update
 

@@ -71,9 +71,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo BASE_URL?>" class="nav-link ">
+                <a href="<?php echo BASE_URL?>/import" class="nav-link ">
                   <i class="<?php if ($first_part=="index.php") {echo "fas"; } else  {echo "far";}?> fa-circle nav-icon"></i>
-                  <p>Home</p>
+                  <p>Import Excel</p>
                 </a>
               </li>
               <li class="nav-item ">

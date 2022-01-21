@@ -57,6 +57,7 @@ function getnm($table,$tb_id,$id,$oname){
     }
 }
 
+
 function getfilter($table,$tb_id,$id,$oname){
 // //nama tabel,tb_id yang dipanggil $id dari foreach oname nama kolom yang di echo
 //  $query = mysqli_query(Connect(),"SELECT * FROM  $table WHERE $tb_id=$id");
