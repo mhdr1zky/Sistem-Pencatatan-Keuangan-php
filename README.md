@@ -1,4 +1,4 @@
-# php-CRUD-Generator-Admin Lte3 -beta this many eror and bugs
+# dont't clone this project have many eror and bugs
 
 ```
 <select name="rekap" class="form-inline">
