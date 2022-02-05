@@ -1,5 +1,6 @@
-# php-CRUD-Generator-Admin Lte3
+# php-CRUD-Generator-Admin Lte3 -beta this many eror and bugs
 
+```
 <select name="rekap" class="form-inline">
                   <?php if (!isset($_GET['rekap'])) {
                     echo "";
