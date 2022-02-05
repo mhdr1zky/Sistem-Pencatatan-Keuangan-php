@@ -54,4 +54,4 @@ this may be out of date but still many use i modified it with nice ui , it can b
 9. add Duplicate Function in Crud
 10. Move CRUD Menu in Integration App And Add Reset Settings
 
-> written with <3 by Me Gandhi Wibowo > Revised By : mhdr1zky
+> written: mhdr1zky
